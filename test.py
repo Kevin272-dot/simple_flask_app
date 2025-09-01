@@ -14,11 +14,10 @@ class MyTestCase(TestCase):
         app.config["TESTING"] = True
         return app
 
-
-def test_index(self):
-    response = self.client.get('/')
-    self.assert_200(response)
-    self.assert_template_used('index.html')
+    def test_index(self):
+        response = self.client.get('/')
+        self.assert_200(response)
+        self.assertEqual(response.data.decode(), "Hello, World!")
 
 
 if __name__ == '__main__':
